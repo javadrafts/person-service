@@ -9,5 +9,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CityPopulationDto {
 	String city;
-	int population;
+	long population;
 }
