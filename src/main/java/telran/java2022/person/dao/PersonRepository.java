@@ -17,6 +17,12 @@ public interface PersonRepository extends CrudRepository<Person, Integer> {
 
 	Stream<Person> findAllByBirthDateBetween(LocalDate from, LocalDate to);
 
+	@Query("select e from Employee e where e.salary between ?1 and ?2")
+	Stream<Person> findEmployeesBySalaryBetween(Integer min, Integer max);
+
+	@Query("select c from Child c")
+	Stream<Person> findAllChildren();
+
 	@Query("select new telran.java2022.person.dto.CityPopulationDto(p.address.city, count(p)) from Person p group by p.address.city order by count(p) desc")
 	List<CityPopulationDto> getCitiesPopulation();
 }
